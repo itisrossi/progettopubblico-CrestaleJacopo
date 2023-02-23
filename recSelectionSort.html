@@ -1,0 +1,39 @@
+<head>
+<title> Selection sort ricorsivo</title>
+</head>
+<body>
+<script>
+    function findMinIndex(start, arr, min)
+    {
+        if(start === input.length)
+        {
+            return min
+        } 
+        else if(arr[start] < arr[min])
+        {
+            min = start
+        }
+        return findMinIndex(start+1, arr, min)
+    }
+    function swap(arr, i, j)
+    {
+        let temp = input[j]
+        input[j] = input[i]
+        input[i]= temp
+    }
+    function selectionSort(arr, start)
+    {
+        if(start === input.length-1)
+        {
+            return arr
+        }
+        else
+        {
+            swap(arr, start, findMinIndex(start, arr, start))
+            return selectionSort(arr, start+1)
+        }
+    }
+    let input = prompt("Inserire i numeri separati da una virgola").split(",")
+    alert(selectionSort(input, 0))
+</script>
+</body>
