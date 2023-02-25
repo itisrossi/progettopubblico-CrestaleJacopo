@@ -3,37 +3,54 @@
 </head>
 <body>
 <script>
-    function findMinIndex(start, arr, min)
-    {
-        if(start === input.length)
-        {
-            return min
-        } 
-        else if(arr[start] < arr[min])
-        {
-            min = start
-        }
-        return findMinIndex(start+1, arr, min)
-    }
-    function swap(arr, i, j)
-    {
-        let temp = input[j]
-        input[j] = input[i]
-        input[i]= temp
-    }
-    function selectionSort(arr, start)
-    {
-        if(start === input.length-1)
-        {
-            return arr
-        }
-        else
-        {
-            swap(arr, start, findMinIndex(start, arr, start))
-            return selectionSort(arr, start+1)
-        }
-    }
-    let input = prompt("Inserire i numeri separati da una virgola").split(",")
-    alert(selectionSort(input, 0))
+	function findMinIndex(start, arr, min)
+	{
+		if(start === input.length)
+		{
+			return min
+		} 
+		else if(arr[start] < arr[min])
+		{
+			min = start
+		}
+		return findMinIndex(start+1, arr, min)
+	}
+	function swap(arr, i, j)
+	{
+		let temp = input[j]
+		input[j] = input[i]
+		input[i]= temp
+	}
+	function selectionSort(arr, start)
+	{
+		if(start === input.length-1)
+		{
+			return arr
+		}
+		else
+		{
+			swap(arr, start, findMinIndex(start, arr, start))
+			return selectionSort(arr, start+1)
+		}
+	}
+	function getIntArray(v, s)   //converte l'input da array di stringhe in array di int
+	{
+		if(s === v.length)
+		{
+			return v
+		}
+		else 
+		{
+			v[s]= parseInt(v[s])
+			return getIntArray(v, s+1)
+		}
+	}
+	let input = getIntArray(prompt("Inserire i numeri separati da una virgola").split(","), 0)
+	let ms1 = new Date().getMilliseconds()
+	let time1 = Date.now()+(ms1 * (10 ** (ms1.length)*-1))
+	let sortedArray = selectionSort(input, 0)
+	let time2 = Date.now()
+	console.log(time2 - time1)
+	console.log(sortedArray)
 </script>
 </body>
