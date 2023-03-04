@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <script>
+        let n = 3
+        let c = 2*n-1
+        let m = new Array(c)
+        for(let i = 0; i< c ; i++)
+        {
+            m[i] = new Array(c)
+        }
+        console.log(m)
+        
+        function printSquare(xstart, xstop, y, number)      //le x e le y sono invertite
+        {
+            for(xstart; xstart!=xstop; xstart++)
+            {
+                m[xstart][y] = n
+                m[y][xstart] = n
+                m[xstart][c-y] = n
+                m[xstop-1][xstart] = n
+            }
+        }
+
+        m = printSquare(0, c, 0, n) 
+        
+        console.log(m)
+    </script>
+</body>
