@@ -4,28 +4,66 @@
 </head>
 <body>
     <script>
-        let n = 3
-        let c = 2*n-1
-        let m = new Array(c)
+        let n = parseInt(prompt("Inserire n:"))
+        let time1= new Date     //misurazione tempo
+        let c = 2*n - 1 
+        let maxLength = n.toString().length
+
+        let m = new Array(c)        //dichiarazione matrice
         for(let i = 0; i< c ; i++)
         {
             m[i] = new Array(c)
         }
-        console.log(m)
         
-        function printSquare(xstart, xstop, y, number)      //le x e le y sono invertite
+        function printRow(xs, xe, y, n)         //printa riga   
         {
-            for(xstart; xstart!=xstop; xstart++)
+            for(xs; xs != xe; xs++)
             {
-                m[xstart][y] = n
-                m[y][xstart] = n
-                m[xstart][c-y] = n
-                m[xstop-1][xstart] = n
+                m[y][xs] = n
             }
         }
 
-        m = printSquare(0, c, 0, n) 
+        function printColumn(ys, ye, x, n)      //printa colonna
+        {
+            for(ys; ys != ye; ys++)
+            {
+                m[ys][x] = n
+            }
+        }
+
+        function printSquare(xstart, xend, ystart, yend, number)      
+        {
+            printRow(xstart, xend, ystart, number)          //colonna sopra
+            printRow(xstart, xend, c-ystart-1, number)      //colonna sotto
+            printColumn(ystart, yend, xstart, number)       //riga sopra   
+            printColumn(ystart, yend, c-xstart-1, number)   //riga sotto
+        }
+
+        for(let i = 0; i!=n; i++)     //unire tutto
+        {
+            printSquare(i, c-i, i, c-i, n-i)
+        }
+
+        for(let i = 0; i!=m.length; i++)        //printa
+        {
+            for(let j= 0; j!=m[i].length; j++)
+            {
+                document.write(m[i][j])
+                for(let cont = 0 ; cont!=(maxLength-m[i][j].toString().length+1)*2; cont++)       //aggiungi spazi
+                {
+                    document.write("&nbsp")
+                }
+
+                if(j != m[i].length-1 && (m[i][j].toString().length - m[i][j+1].toString().length) != 0)   //aggiunge lo spazio quando si passa da 2 cifre a 1
+                {
+                    document.write("&nbsp")
+                }
+            }
+            document.write("<br>")
+        }
         
-        console.log(m)
+        let time2 = new Date    //misurazione tempo
+        console.log(time2.getTime()-time1.getTime())
     </script>
 </body>
+
