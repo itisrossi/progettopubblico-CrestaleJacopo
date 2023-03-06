@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+<script>
+    let v = prompt("Inserire array separato da virgole.").split(",")
+    console.log(v)
+    let temp = 0
+    function reverse(i, j)
+    {
+        if(i >= j)
+        {
+            return 
+        }
+        else
+        {
+            temp = v[j]
+            v[j] = v[i]
+            v[i] = temp
+            return reverse(i+1, j-1)
+        }
+    }
+    reverse(0, v.length-1)
+    console.log(v)
+</script>
+</body>
