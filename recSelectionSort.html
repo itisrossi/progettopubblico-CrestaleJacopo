@@ -46,11 +46,11 @@
 		}
 	}
 	let input = getIntArray(prompt("Inserire i numeri separati da una virgola").split(","), 0)
-	let ms1 = new Date().getMilliseconds()
-	let time1 = Date.now()+(ms1 * (10 ** (ms1.length)*-1))
+	let time1 = new Date().getTime()
 	let sortedArray = selectionSort(input, 0)
-	let time2 = Date.now()
-	console.log(time2 - time1)
-	console.log(sortedArray)
+	let time2 = new Date().getTime()
+	document.write
+	("Tempo impiegato(ms): " + (time2 - time1) + "<br>"
+	+ sortedArray)
 </script>
 </body>
