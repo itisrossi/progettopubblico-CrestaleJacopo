@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head> 
+
+</head>
+<body>
+<script>
+    function count(str, element, i, c)
+    {
+        if(i == str.length)
+        {
+            return c
+        }
+        else
+        {
+            if(!isNaN(str[i]) && str[i] === element.toString())
+            {
+                c++
+            }
+            return count(str, element, i+1, c)            
+        }
+    }
+    function printFrequency(str, i)
+    {
+        if(i > 9)
+        {
+            return
+        }
+        else
+        {
+            document.write(count(str, i, 0, 0)+ " ")
+            return printFrequency(str, i+1)
+        }
+    }
+    let input = prompt("Inserire la stringa:") 
+    document.write(input+ "<br>") 
+    printFrequency(input, 0)
+</script>
+</body>
