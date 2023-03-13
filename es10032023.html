@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<script>
+    function traduci(input)
+    {   
+        traduciTripletta 
+    }
+    function traduciTripletta(input, p)
+    {
+        let i = 0
+        for(i; i < input.length; i++)
+        {
+            if((input.length-i) % 3 == 0)
+            {
+                console.log(unità[parseInt(input[i])] + molt[1])
+            }
+            else if((input.length-i) % 2 == 0)
+            {
+                console.log(decine[parseInt(input[i])])
+            }
+            else
+            {
+                console.log(unità[parseInt(input[i])])
+            }
+        }
+    }   
+</script>
+</head>
+<body>
+<script>
+    let input = "1999"
+    const unità = ["", "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove"]
+    const decine = ["", "dieci", "venti", "trenta", "quaranta", "cinquanta", "sessanta", "settanta", "ottanta", "novanta"]
+    const molt = ["", "cento", "mila"]
+</script>
+<input type = "text">
+<button onclick = "traduci(input)">Scrivi</button>
+</body>
